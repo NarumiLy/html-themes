@@ -70,18 +70,71 @@ window.onload = function () {
 
     }
 
+   /* function constellations(max_star) {
+
+        let circle = Math.PI * 2;
+        ctx.fillStyle = "white";
+        ctx.globalAlpha = 1;
+        let x = Math.abs(Math.floor(Math.random() * 1900));
+        let y = Math.abs(Math.floor(Math.random() * 1050));
+        let r = Math.floor(Math.random() * 5) + 1;
+
+        let start = [];
+        let i = 0;
+        while (i < Math.floor(Math.random() * max_star) + 2) {
+            if (i >= 1) {
+                x = Math.abs(Math.floor(Math.random() * 10)) + star[i - 1].x;
+                y = Math.abs(Math.floor(Math.random() * 10)) + star[i - 1].y;
+            }
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, circle, false);
+            ctx.fill();
+            start[i] = {"x": x, "y": y}
+            i++;
+        }
+        this.start = start;
+    }
+
+    constellations.prototype.rewrite = function () {
+
+        for(let i in this.start) {
+            if(i != 0) {
+                console.log(i + " test")
+                ctx.globalAlpha = 1;
+                ctx.strokeStyle = "white";
+                ctx.beginPath();
+                ctx.moveTo(this.start[i].x, this.start[i].y);
+                ctx.lineTo(this.start[i - 1].x, this.start[i - 1].y);
+                ctx.stroke();
+            }
+        }
+    } */
+
     let i = 0;
     let star = [];
+   // let constellation = [];
+
     while (i < 50) {
         star[i] = new stars(Math.abs(Math.floor(Math.random() * 1900)), Math.abs(Math.floor(Math.random() * 1050)), Math.floor(Math.random() * 3)+1, 0, true);
         i++;
     }
 
+   /* i = 0;
+    while(i < 5) {
+        constellation[i] = new constellations(2);
+        constellation[i].rewrite();
+        i++;
+    } */
+
     function move() {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
-        for(const ii in star) {
-            star[ii].move();
-    }}
+       /* for(const i in constellation) {
+            constellation[i].rewrite();
+        } */
+        for(const i in star) {
+            star[i].move();
+        }
+    }
 
 return setInterval(move, 0);
 
